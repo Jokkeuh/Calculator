@@ -21,13 +21,16 @@ body{
 .span-two{
     grid-column: span 2;
 }
+.span-four{
+    grid-column: span 4;
+}
 .output{
     min-height: 15vh;
     grid-column: 1 /-1 ;
-    background-color: rgba(95, 95, 68, 0.50);
-    outline: 2px solid black;
+    background-color: rgba(183, 211, 253, 0.5);
+    outline: 1px solid black;
+    border-radius: 2px;
     display: flex;
-    padding: 15px;
     align-items: flex-end;
     flex-direction: column;
     justify-content: space-around;
@@ -35,11 +38,11 @@ body{
     word-break: break-all;
 }
 .output .previous-operand {
-    color: rgba(85, 85, 85, 0.75);
+    color: rgba(56, 55, 55, 0.75);
     font-size: 1rem;
 }
 .output .current-operand {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(80, 0, 0, 0.75);
     font-size: 1.5rem;
 }
 
@@ -48,7 +51,7 @@ body{
 .calculator-grid > button{
    cursor: pointer;
    font-size: 2em;
-   border: 1px solid white;
+   border: 1px solid rgb(41, 1, 1);
    outline: none;
 
 }
