@@ -26,8 +26,8 @@ class Calculator {
 
 
     chooseOperation(operation){
-        if(this.currentOperand === "") return
-        if(this.previousOperand !== ""){
+        if(this.currentOperand === undefined) return
+        if(this.previousOperand !== undefined){
             this.compute()
         }
         this.operation = operation
@@ -63,9 +63,23 @@ class Calculator {
 
     }
     getDis(number){
+        const stringNumber = number.toString()
+        const intNumber = parseFloat(stringNumber.split(".")[0])
+        const decNumber = stringNumber.split(".")[1]
         const floatNumber = parseFloat(number)
-        if (isNaN(floatNumber))return ''
-        return floatNumber.toLocaleString('en')
+        let intDisplay
+        if(isNaN(intNumber)){
+            intDisplay =""
+        }else{
+            intDisplay = intNumber.toLocaleString('en', {maximumFractionDigits  : 0});
+        }
+        if (decNumber != null){
+            return `${intDisplay}.${decNumber}`;
+        }else{
+            return intDisplay;
+        }
+        //if (isNaN(floatNumber))return ''
+        //return floatNumber.toLocaleString('en')
      }
 
 
@@ -73,9 +87,11 @@ class Calculator {
     updateDis(){
         this.currentOperandTextElement.innerText = 
             this.getDis(this.currentOperand);
-        if(this.operation != undefined){
+        if(this.operation != null){
             this.previousOperandTextElement.innerText = 
             `${this.getDis(this.previousOperand)} ${this.operation}`
+        }else{
+            this.previousOperandTextElement.innerText =""
         }
         
 
